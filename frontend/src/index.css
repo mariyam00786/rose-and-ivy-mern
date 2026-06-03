@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --brand-white: #FFFFFF;
+  --brand-charcoal: #222222;
+  --brand-gold: #D4AF37;
+  --brand-champagne: #F7E7CE;
+  --brand-pink: #D9A0A8;
+  --brand-muted: #71717A;
+}
+
+@theme {
+  --color-brandWhite: #FFFFFF;
+  --color-brandCharcoal: #222222;
+  --color-brandGold: #D4AF37;
+  --color-brandChampagne: #F7E7CE;
+  --color-brandPink: #D9A0A8;
+  --color-brandMuted: #71717A;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Inter', 'Montserrat', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', 'Montserrat', sans-serif;
+  background: #FFFFFF;
+  color: #222222;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F4F4F5; }
+::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 3px; }
+
+.font-serif { font-family: 'Cormorant Garamond', serif; }
+.font-sans { font-family: 'Inter', 'Montserrat', sans-serif; }
+
+.nav-hover-line { position: relative; }
+.nav-hover-line::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -4px;
+  left: 50%;
+  background-color: #D4AF37;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+.nav-hover-line:hover::after { width: 100%; }
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 420px;
+  max-width: 95vw;
+  background: white;
+  box-shadow: -4px 0 30px rgba(0,0,0,0.12);
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+.cart-drawer.open { transform: translateX(0); }
+
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s;
+}
+.cart-overlay.open { opacity: 1; pointer-events: all; }
